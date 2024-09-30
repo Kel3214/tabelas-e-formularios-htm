@@ -1,0 +1,80 @@
+<html lang="pt-BR"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro</title>
+</head>
+<body>
+
+    <h1>Cadastro de Usuário</h1>
+    <form action="#" method="POST" onsubmit="return validateForm()">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="password">Senha:</label>
+        <input type="password" id="password" name="password" minlength="8" required><br><br>
+
+        <label for="dob">Data de Nascimento:</label>
+        <input type="date" id="dob" name="dob" required><br><br>
+
+        <label>Gênero:</label><br>
+        <input type="radio" id="male" name="gender" value="masculino" required>
+        <label for="male">Masculino</label><br>
+        <input type="radio" id="female" name="gender" value="feminino">
+        <label for="female">Feminino</label><br>
+        <input type="radio" id="other" name="gender" value="outro">
+        <label for="other">Outro</label><br><br>
+
+        <label for="city">Cidade:</label>
+        <select id="city" name="city" required>
+            <option value="">Selecione...</option>
+            <option value="viçosa">viçosa</option>
+            <option value="Maceio">maceio</option>
+            <option value="tangamandápio">tangamandapio</option>
+        </select><br><br>
+
+        <label>Interesses:</label><br>
+        <input type="checkbox" id="interest1" name="interests" value="interesse1">
+        <label for="interesse1">interesse1</label><br>
+        <input type="checkbox" id="interest2" name="interests" value="interesse2">
+        <label for="interesse2">interesse2</label><br><br>
+
+        <label for="quantity">Quantidade de Produtos:</label>
+        <input type="number" id="quantity" name="quantity" min="1" required><br><br>
+
+        <label for="observations">Observações Adicionais:</label><br>
+        <textarea id="observations" name="observations"></textarea><br><br>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const dob = document.getElementById('dob').value;
+
+            // Validação de e-mail
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Por favor, insira um e-mail válido.');
+                return false;
+            }
+
+            // Validação de data de nascimento
+            const today = new Date();
+            const birthDate = new Date(dob);
+            if (birthDate > today) {
+                alert('A data de nascimento deve ser uma data válida.');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+
+</body>
+</html>
